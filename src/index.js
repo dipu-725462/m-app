@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import {registerRootComponent} from "expo";
 import { StyleSheet, Text, View , Button , Alert } from 'react-native';
 
-export default function App() {
+function App () {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>First React Native APP !</Text>
       <Button
-          title="Press Me"
+          title="Press Me 1"
           onPress={() => Alert.alert('Learning React native')}
         />
       <StatusBar style="auto" />
@@ -26,3 +27,5 @@ const styles = StyleSheet.create({
     marginBottom: 20
   }
 });
+
+export default registerRootComponent(App);
