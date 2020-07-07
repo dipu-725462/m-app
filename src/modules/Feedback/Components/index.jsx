@@ -10,7 +10,7 @@ class Feedback extends Component {
     }
 
     handleSelected = (value) => {
-        console.log("check box pressed ",value);
+        // console.log("check box pressed ",value);
     }
 
     render() {

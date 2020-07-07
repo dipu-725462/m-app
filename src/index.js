@@ -1,6 +1,6 @@
 import React from 'react';
 import {registerRootComponent} from "expo";
-import Feedback from './Components/Feedback';
+import Feedback from './modules/Feedback/Components/index';
 
 function App () {
   return (
