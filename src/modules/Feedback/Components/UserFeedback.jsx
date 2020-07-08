@@ -7,26 +7,32 @@ class UserFeedback extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            value: 0
-        }
+        this.state = { count: 0 }
+        this.handleTextChange = this.handleTextChange.bind(this);
+    }
+
+    handleTextChange = ({ nativeEvent }) => {
+        const { text } = nativeEvent;
+        (text.length >= 0 && this.setState({ count: text.length }));
     }
 
     render() {
         const { heading, tip, text } = userFeedback;
-        let count = this.state.value.length;
-        if (!count) {
-            count = 0;
-        }
+        let count = this.state.count;
+
 
         return (
             <View style={styles.card}>
-                <Text style={styles.subHeading}>{heading}</Text>
-                <Text style={styles.tip}>{tip}</Text>
+                <Text style={styles.subHeading}>
+                    {heading}
+                </Text>
+                <Text style={styles.tip}>
+                    {tip}
+                </Text>
                 <TextInput
                     style={styles.feedback}
                     multiline={true}
-                    onChangeText={(value) => this.setState({ value })}
+                    onChange={this.handleTextChange}
                     placeholder={text}
                     placeholderTextColor="#14bef0"
                 />

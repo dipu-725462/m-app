@@ -19,13 +19,14 @@ class UserConsent extends Component {
     }
 
     render() {
-        console.log("called called ");
         const { note, text } = userConsent;
         return (
             <View style={styles.wrapper}>
                 <View style={styles.user_consent__wrapper}>
                     <CheckBox
+                        style= {styles.checkbox}
                         value={this.state.checked}
+                        uncheckedColor={'red'}
                         onChange={this.handleChange}
                     />
                     <Text style={styles.checkBox_label}>{text}</Text>
@@ -43,9 +44,13 @@ const styles = StyleSheet.create({
     },
     user_consent__wrapper: {
         flexDirection: "row",
+        alignItems : "center",
         paddingVertical: 16
     },
-
+    checkbox : {
+        color :"#14bef0",
+        height : 16,
+    },
     checkBox_label: {
         fontSize: 16,
         color: "#2d2d32",
