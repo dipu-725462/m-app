@@ -3,13 +3,31 @@ import { View, Text, StyleSheet, CheckBox } from 'react-native';
 import { userConsent } from '../Constants/constant';
 
 class UserConsent extends Component {
-    render() {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            checked: false
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange() {
+        this.setState({
+            checked: !this.state.checked
+        })
+    }
+
+    render() {
+        console.log("called called ");
         const { note, text } = userConsent;
         return (
             <View style={styles.wrapper}>
                 <View style={styles.user_consent__wrapper}>
-                    <CheckBox />
+                    <CheckBox
+                        value={this.state.checked}
+                        onChange={this.handleChange}
+                    />
                     <Text style={styles.checkBox_label}>{text}</Text>
                 </View>
                 <Text style={styles.consent_info}>{note}</Text>
@@ -19,12 +37,12 @@ class UserConsent extends Component {
 }
 
 const styles = StyleSheet.create({
-    wrapper : {
-        paddingHorizontal : 10, 
-        paddingVertical : 16
+    wrapper: {
+        paddingHorizontal: 10,
+        paddingVertical: 16
     },
     user_consent__wrapper: {
-        flexDirection : "row",
+        flexDirection: "row",
         paddingVertical: 16
     },
 
@@ -32,7 +50,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: "#2d2d32",
         fontWeight: "700",
-        paddingLeft : 10
+        paddingLeft: 10
     },
     consent_info: {
         fontSize: 14,
