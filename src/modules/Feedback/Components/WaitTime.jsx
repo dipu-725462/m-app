@@ -30,8 +30,8 @@ class WaitTime extends Component {
 const styles = StyleSheet.create({
     card : {
         marginTop : 40,
-        borderBottomWidth: 1,
-        borderBottomColor : "#D3D3D3",
+        borderBottomWidth: 2,
+        borderBottomColor : "#e8e8f0",
        paddingHorizontal : 16,
        paddingBottom: 8,
     },
