@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, TouchableOpacity, CheckBox, Radio, View , SafeAreaView } from 'react-native';
+import {ScrollView, SafeAreaView, StyleSheet, Platform } from 'react-native';
 import WaitTime from './WaitTime';
 import RecommendDoctor from './RecommendDoctor';
 import PatientIssues from './PatientIssues';
@@ -15,17 +15,25 @@ class Feedback extends Component {
 
     render() {
         return (
-            <ScrollView>
-                <RecommendDoctor />
-                <PatientIssues />
-                <WaitTime />
-                <DoctorFrinedliness />
-                <UserFeedback />
-                <FeedbackInfo />
-                <UserConsent />
-            </ScrollView>
+            <SafeAreaView>
+                <ScrollView style={styles.feedback_wrapper}>
+                    <RecommendDoctor />
+                    <PatientIssues />
+                    <WaitTime />
+                    <DoctorFrinedliness />
+                    <UserFeedback />
+                    <FeedbackInfo />
+                    <UserConsent />
+                </ScrollView>
+            </SafeAreaView>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    feedback_wrapper : {
+        marginTop : Platform.OS === 'android' ? 25: 0
+    }
+})
 
 export default Feedback;
