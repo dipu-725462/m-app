@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { userFeedback } from '../Constants/constant';
 
-
+const MIN_FEEDBACK_LENGTH = 100;
 class UserFeedback extends Component {
 
     constructor(props) {
@@ -30,7 +30,7 @@ class UserFeedback extends Component {
                     placeholder={text}
                     placeholderTextColor="#14bef0"
                 />
-                <Text style={count > 100 ? styles.count_execeeded : styles.count}>{`${count}/100`}</Text>
+                <Text style={count > MIN_FEEDBACK_LENGTH ? styles.count_execeeded : styles.count}>{`${count}/100`}</Text>
             </View>
         )
     }

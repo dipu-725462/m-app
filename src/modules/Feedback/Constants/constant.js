@@ -45,7 +45,7 @@ export const userFeedback = {
 }
 
 export const feedbackInfo = {
-    text: 'All feedback go under strict moderation process before publishing to check abusive language, threats, superlative comments on medical abilities and so on.'
+    text: 'Note: All feedback go under strict moderation process before publishing to check abusive language, threats, superlative comments on medical abilities and so on.'
 }
 
 export const userConsent = {

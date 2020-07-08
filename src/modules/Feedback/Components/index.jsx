@@ -6,6 +6,7 @@ import PatientIssues from './PatientIssues';
 import UserConsent from './UserConsent';
 import UserFeedback from './UserFeedback';
 import DoctorFrinedliness from './DoctorFrinedliness';
+import FeedbackInfo from './FeedbackInfo';
 
 class Feedback extends Component {
     constructor(props) {
@@ -20,8 +21,8 @@ class Feedback extends Component {
                 <WaitTime />
                 <DoctorFrinedliness />
                 <UserFeedback />
+                <FeedbackInfo />
                 <UserConsent />
-                
             </ScrollView>
         )
     }
