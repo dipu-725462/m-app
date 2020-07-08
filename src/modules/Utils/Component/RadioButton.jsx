@@ -30,7 +30,9 @@ class RadioButton extends Component {
                         onPress={this.handleClick.bind(null, item.key)}>
                         {this.state.value === item.key && <View style={styles.checkedCircle} />}
                     </TouchableOpacity>
-                    <Text style={styles.buttonText}>{item.text}</Text>
+                    <Text style={this.state.value === item.key ? styles.buttonTextChecked : styles.buttonText} >
+                        {item.text}
+                    </Text>
                 </View>
             )
         })
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         alignItems: 'center',
-        marginBottom: 30,
+        marginBottom: 20,
     },
     circle: {
         height: 20,
@@ -66,16 +68,20 @@ const styles = StyleSheet.create({
         width: 14,
         height: 14,
         borderRadius: 7,
-        backgroundColor: '#794F9B',
+        backgroundColor: '#14bef0',
     },
     buttonText: {
         marginLeft: 15,
-        marginRight: 15
+        marginRight: 15,
+        color : "rgba(45, 45, 50,0.8)"
+    },
+    buttonTextChecked: {
+        marginLeft: 15,
+        marginRight: 15,
+        color: '#14bef0'
     },
     wrapper: {
-        flex: 1,
-        marginTop: 40,
-        marginLeft: 40
+
     }
 });
 

@@ -1,5 +1,5 @@
 export const recommendDoctor = {
-    heading: 'Would you like to recommend doctor',
+    heading: 'Would you like to recommend doctor ?',
     options: [
         {
             key: 'true',
@@ -8,6 +8,28 @@ export const recommendDoctor = {
         {
             key: 'false',
             text: 'NO',
+        }
+    ]
+}
+
+export const waitTime = {
+    heading : 'How long did you wait to be seen by doctor ?',
+    options : [
+        {   
+            key : 10,
+            text : 'Less than 15 min'
+        },
+        {   
+            key : 15,
+            text : '15 min to 30 min'
+        },
+        {   
+            key : 30,
+            text : '30 min to 1 hour'
+        },
+        {   
+            key : 1,
+            text : 'More than 1 hour'
         }
     ]
 }
