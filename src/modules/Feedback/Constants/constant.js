@@ -34,6 +34,10 @@ export const waitTime = {
     ]
 }
 
+export const doctorFriendliness = {
+    heading : 'What were you most happy with ?',
+} 
+
 export const userFeedback = {
     heading: 'Tell us about your experience with the doctor.',
     tip: "Tip: eg. Share relevant stories which made you appreciate 'doctor friendliness'. Read more tips",

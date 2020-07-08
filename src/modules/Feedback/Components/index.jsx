@@ -5,7 +5,7 @@ import RecommendDoctor from './RecommendDoctor';
 import PatientIssues from './PatientIssues';
 import UserConsent from './UserConsent';
 import UserFeedback from './UserFeedback';
-import SatisfactionList from './SatisfactionList';
+import DoctorFrinedliness from './DoctorFrinedliness';
 
 class Feedback extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class Feedback extends Component {
                 <RecommendDoctor />
                 <PatientIssues />
                 <WaitTime />
-                <SatisfactionList />
+                <DoctorFrinedliness />
                 <UserFeedback />
                 <UserConsent />
                 
