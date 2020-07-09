@@ -11,7 +11,7 @@ const TagSelected = ({ text ,removeTagSelected  }) => {
     return (
             <Text style={styles.text_wrapper}>
                 {text}
-                <Text style={styles.cancel_icon} onPress={handleIconClick}>{"  x  "}</Text>
+                <Text style={styles.cancel_icon} onPress={handleIconClick}>{"                x  "}</Text>
             </Text>
     )
 }
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         fontWeight: "900",
         fontSize : 14,
         margin : 30,
-        width : 20
+        width : 20,
     }
 });
 

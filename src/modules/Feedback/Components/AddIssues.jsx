@@ -5,9 +5,6 @@ import { response } from '../Constants/mock-api/mock-api';
 import TagList from './TagList';
 import TagSelected from './TagSelected';
 
-const ADD = 'add';
-const RMEOVE = 'remove';
-
 class AddIssues extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +23,7 @@ class AddIssues extends Component {
         />
     }
 
-    handleChage = ({ nativeEvent }) => {
+    handleChange = ({ nativeEvent }) => {
         const { text } = nativeEvent;
         this.setState({
             searchText: text
@@ -57,7 +54,10 @@ class AddIssues extends Component {
 
     removeTagSelected = (tag) => {
         if (this.state.tagsSelected.includes(tag)) {
-            this.setState({ tagsSelected: this.state.tagsSelected.pop(tag)})
+            let arr = this.state.tagsSelected;
+            const position = arr.indexOf(tag);
+            arr.splice(position,1);
+            this.setState({ tagsSelected: arr})
         }
     }
 
@@ -66,7 +66,6 @@ class AddIssues extends Component {
         if(!list){
             return;
         }
-        
         return list.map((item,index)=> {
             return <TagSelected key={index} text={item}  removeTagSelected={this.removeTagSelected}/>
         })
@@ -78,19 +77,18 @@ class AddIssues extends Component {
         let listToBeRendered = !currentSearchText ? response.tagList : this.updateTagList(response.tagList, currentSearchText);
         return (
                 <View style={styles.addIssues_wrapper}>
-                {/* tag list */}
+                {/** tag list */}
                 
                 <View style={styles.selected_tags_wrapper}>
                     {this.renderSelectedTags()}
                 </View>
 
 
-                {/* search bar  */}
                 <View>
                     <TextInput
                         style={styles.search_bar}
                         placeholder="e.g Stomach Ache, body pain"
-                        onChange={this.handleChage}
+                        onChange={this.handleChange}
                     />
                 </View>
 
