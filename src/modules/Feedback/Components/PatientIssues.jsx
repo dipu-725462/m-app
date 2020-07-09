@@ -50,12 +50,12 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     addIssues_text: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: "700",
         color: "#14bef0"
     },
     addIssues_icon: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: "700",
         color: "#14bef0",
         paddingLeft: 10,

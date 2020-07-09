@@ -1,76 +1,137 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native';
 import { TextInput, FlatList, ScrollView } from 'react-native-gesture-handler';
 import { response } from '../Constants/mock-api/mock-api';
 import TagList from './TagList';
+import TagSelected from './TagSelected';
+
+const ADD = 'add';
+const RMEOVE = 'remove';
 
 class AddIssues extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchText : ''
+            searchText: '',
+            tagsSelected: []
         }
         this.tagList = response.tagList;
-        // this.renderList = this.renderList.bind(this);
-    }
-    
-    renderList = ({item,index}) =>{
-        return <TagList key={index} data={item.name} />
     }
 
-   
+    renderList = ({ item, index }) => {
+        return <TagList
+            key={index}
+            data={item.name}
+            handleTagClick = {this.handleTagClick}
+        />
+    }
 
-    handleChage = ({nativeEvent}) => {
-        const {text} = nativeEvent;
+    handleChage = ({ nativeEvent }) => {
+        const { text } = nativeEvent;
         this.setState({
-            searchText : text
+            searchText: text
         })
-    }  
-      
-    updateTagList = (arr,text) => {
-        return arr.filter((item,index)=> {
-            if(item.name.startsWith(text))
+        console.log(text);
+    }
+
+    updateTagList = (arr, text) => {
+        return arr.filter((item, index) => {
+            if (item.name.toLowerCase().startsWith(text.toLowerCase()))
                 return true;
         })
     }
 
+    handleTagClick = (tag) => {
+        if (this.state.tagsSelected.includes(tag)) {
+            return;
+        }
+        return this.addTagSelected(tag)
+    }
+
+    addTagSelected = (data) => {
+        if (data && this.state.tagsSelected.length <=5) {
+             this.setState({ tagsSelected: this.state.tagsSelected.concat(data) })
+             return;
+        }
+        return Alert.alert("","Maximum 5 issues can be added")
+    }
+
+    removeTagSelected = (tag) => {
+        if (this.state.tagsSelected.includes(tag)) {
+            this.setState({ tagsSelected: this.state.tagsSelected.pop(tag)})
+        }
+    }
+
+    renderSelectedTags = () => {
+        const list = this.state.tagsSelected;
+        if(!list){
+            return;
+        }
+        
+        return list.map((item,index)=> {
+            return <TagSelected key={index} text={item}  removeTagSelected={this.removeTagSelected}/>
+        })
+    }
+
+
     render() {
         const currentSearchText = this.state.searchText;
-        let listToBeRendered = !currentSearchText ? response.tagList : this.updateTagList(response.tagList,currentSearchText);
-
-        return(
-            <View style={styles.addIssues_wrapper}>
+        let listToBeRendered = !currentSearchText ? response.tagList : this.updateTagList(response.tagList, currentSearchText);
+        return (
+                <View style={styles.addIssues_wrapper}>
                 {/* tag list */}
-                <View>
-                    {/* {this.renderSelectedItems} */}
-                </View>
                 
+                <View style={styles.selected_tags_wrapper}>
+                    {this.renderSelectedTags()}
+                </View>
+
+
                 {/* search bar  */}
                 <View>
                     <TextInput
+                        style={styles.search_bar}
                         placeholder="e.g Stomach Ache, body pain"
-                        onChange ={this.handleChage} 
+                        onChange={this.handleChage}
                     />
                 </View>
 
                 {/* suggestions  */}
-                <Text>
-                   Suggestions
+                <Text style={styles.suggestion_bar}>
+                    Suggestions
                 </Text>
 
-                <FlatList 
-                    data = {listToBeRendered}
+                <FlatList
+                    data={listToBeRendered}
                     renderItem={this.renderList}
                     keyExtractor={(item, index) => index.toString()}
                 />
+
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    addIssues_wrapper : {
-        flex: 1
+    addIssues_wrapper: {
+        flex: 1,
+        backgroundColor : "white"
+    },
+    selected_tags_wrapper : {
+        flexDirection : "row",
+        flexWrap : "wrap"
+    },
+    suggestion_bar : {
+        backgroundColor : "rgba(180,180,190,0.2)",
+        color : "#b4b4be",
+        fontSize : 16,
+        fontWeight : "700",
+        paddingHorizontal:10,
+        paddingVertical : 15
+    },
+    search_bar : {
+        paddingHorizontal :10,
+        paddingVertical : 15,
+        fontSize : 16,
     }
 })
 
