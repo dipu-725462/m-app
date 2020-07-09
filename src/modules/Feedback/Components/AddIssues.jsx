@@ -31,7 +31,6 @@ class AddIssues extends Component {
         this.setState({
             searchText: text
         })
-        console.log(text);
     }
 
     updateTagList = (arr, text) => {
