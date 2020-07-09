@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
 import { userFeedback } from '../Constants/constant';
 
 const MIN_FEEDBACK_LENGTH = 100;
@@ -29,7 +29,7 @@ class UserFeedback extends Component {
                 <Text style={styles.tip}>
                     {tip}
                 </Text>
-                <TextInput
+               <TextInput
                     style={styles.feedback}
                     multiline={true}
                     onChange={this.handleTextChange}
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         padding: 10,
         textAlignVertical: 'top',
+        
     },
     count: {
         justifyContent: "flex-end",

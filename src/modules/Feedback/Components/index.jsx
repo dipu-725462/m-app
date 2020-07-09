@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ScrollView, SafeAreaView, StyleSheet, Platform } from 'react-native';
+import { ScrollView, SafeAreaView, StyleSheet, Platform, StatusBar, KeyboardAvoidingView } from 'react-native';
 import WaitTime from './WaitTime';
 import RecommendDoctor from './RecommendDoctor';
 import PatientIssues from './PatientIssues';
@@ -14,25 +14,29 @@ class Feedback extends Component {
     }
 
     render() {
+        const {navigation} = this.props;
         return (
             <SafeAreaView>
-                <ScrollView style={styles.feedback_wrapper}>
-                    <RecommendDoctor />
-                    <PatientIssues />
-                    <WaitTime />
-                    <DoctorFrinedliness />
-                    <UserFeedback />
-                    <FeedbackInfo />
-                    <UserConsent />
-                </ScrollView>
+                {/* <KeyboardAvoidingView behavior="padding"> */}
+                    <ScrollView style={styles.feedback_wrapper}>
+                        <RecommendDoctor doctorName = {"Dr. Anup Jain"} />
+                        <PatientIssues {...this.props} />
+                        <WaitTime />
+                        <DoctorFrinedliness />
+                        <UserFeedback />
+                        <FeedbackInfo />
+                        <UserConsent />
+                    </ScrollView>
+                {/* </KeyboardAvoidingView> */}
             </SafeAreaView>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    feedback_wrapper : {
-        marginTop : Platform.OS === 'android' ? 25: 0
+    feedback_wrapper: {
+        // marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        backgroundColor : "white"
     }
 })
 

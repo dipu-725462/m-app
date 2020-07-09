@@ -34,6 +34,11 @@ export const waitTime = {
     ]
 }
 
+export const patientIssues = {
+    heading : "For which health problem/treatment did you visit ?",
+    problemsPlaceholder : 'e.g. Stomach Ache, body pain'
+}
+
 export const doctorFriendliness = {
     heading : 'What were you most happy with ?',
 } 

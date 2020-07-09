@@ -15,11 +15,11 @@ class RecommendDoctor extends Component {
 
     render() {
         const {heading, options} = recommendDoctor;
-        const {doctor_name} = this.props;
+        const {doctorName} = this.props;
 
         return (
             <View style={styles.card}>
-                <Text style={styles.heading}>{`How was your appointment experience with ${doctor_name} ?`}</Text>
+                <Text style={styles.heading}>{`How was your appointment experience with ${doctorName} ?`}</Text>
                 <Text style={styles.subHeading}>{heading}</Text>
                 <RadioButton options={options} onSelected={this.handleSelected} />
             </View>
