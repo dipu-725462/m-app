@@ -1,35 +1,29 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+const TagList = ({ data, handleTagClick }) => {
 
-const TagList = ({data,handleTagClick}) => {
-    
     const handleClick = () => {
         handleTagClick(data);
     }
 
-    return(
-        <View style={styles.list_wrapper}>
-            <Text style={styles.list_text} onPress = {handleClick}>
-                {data}
-            </Text>
-        </View>
+    return (
+        <Text style={styles.list_wrapper} onPress={handleClick}>
+            {data}
+        </Text>
     )
 }
 
 const styles = StyleSheet.create({
-    list_wrapper : {
+    list_wrapper: {
         paddingHorizontal: 10,
-        paddingVertical : 15,
+        paddingVertical: 15,
         borderBottomWidth: 1,
-        borderBottomColor : "#e8e8f0",
-        marginHorizontal: 10
-    },
-    list_text : {
+        borderBottomColor: "#e8e8f0",
+        marginHorizontal: 10,
         fontSize: 18,
         color: "#2d2d32",
     }
 });
-
 
 export default TagList;
