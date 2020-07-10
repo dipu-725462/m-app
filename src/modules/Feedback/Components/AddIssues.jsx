@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native';
+import { View, Text, StyleSheet, Alert, KeyboardAvoidingView, SafeAreaView } from 'react-native';
 import { TextInput, FlatList, ScrollView } from 'react-native-gesture-handler';
 import { response } from '../Constants/mock-api/mock-api';
 import TagList from './TagList';
@@ -76,7 +76,8 @@ class AddIssues extends Component {
         const currentSearchText = this.state.searchText;
         let listToBeRendered = !currentSearchText ? response.tagList : this.updateTagList(response.tagList, currentSearchText);
         return (
-                <View style={styles.addIssues_wrapper}>
+               <SafeAreaView style={{flex : 1, backgroundColor : "white"}}>
+                    <View style={styles.addIssues_wrapper}>
                 {/** tag list */}
                 
                 <View style={styles.selected_tags_wrapper}>
@@ -104,6 +105,7 @@ class AddIssues extends Component {
                 />
 
             </View>
+               </SafeAreaView>
         )
     }
 }

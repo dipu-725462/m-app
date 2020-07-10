@@ -4,7 +4,6 @@ import { Text, StyleSheet } from 'react-native';
 const TagSelected = ({ text ,removeTagSelected  }) => {
     
     const handleIconClick = () => {
-        console.log("close click logged !!!!!!");
         removeTagSelected(text);
     }
     
