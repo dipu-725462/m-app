@@ -14,7 +14,9 @@ class Checkbox extends Component {
         return options.map((item, index) => {
             return (
                 <TouchableOpacity style={styles.checkbox_wrapper}>
-                    
+                    <View> 
+                        
+                    </View>
                 </TouchableOpacity>
             )
         })

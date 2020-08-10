@@ -1,10 +1,18 @@
 import React from 'react';
-import Feedback from '../../modules/Feedback/Components';
+import { createStackNavigator } from "@react-navigation/stack";
 
-const FeedbackScreen = () => {
-    return(
-        <Feedback />
+import Feedback from '../../modules/Feedback/Components';
+import AddIssues from '../../modules/Feedback/Components/AddIssues';
+
+const FeedbackFormStack = createStackNavigator();
+
+const FeedbackFormScreen = () => {
+    return (
+        <FeedbackFormStack.Navigator initialRouteName="Give Feedback">
+            <FeedbackFormStack.Screen name="Give Feedback" component={Feedback} />
+            <FeedbackFormStack.Screen name= "Add Issues" component={AddIssues} />
+        </FeedbackFormStack.Navigator>
     )
 }
 
-export default FeedbackScreen;
+export default FeedbackFormScreen;
